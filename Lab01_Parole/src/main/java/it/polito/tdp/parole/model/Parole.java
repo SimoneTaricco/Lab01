@@ -27,6 +27,14 @@ public class Parole {
 			this.parole.remove(i);
 	}
 	
+	public String toString(List l) {	
+		String res = "";
+		for (int i=0; i<l.size(); i++)
+			res += l.get(i) + "\n";
+		
+		return res;
+	}
+	
 	public static Comparator<String> ordineAlfabetico = new Comparator<String>() {
 		public int compare(String s1, String s2) {
 			return s1.compareTo(s2);

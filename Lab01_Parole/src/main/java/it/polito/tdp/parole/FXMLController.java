@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 
 public class FXMLController {
 	
-	Parole elenco;
+	Parole elenco = new Parole();
 
     @FXML
     private ResourceBundle resources;
@@ -34,11 +34,34 @@ public class FXMLController {
     @FXML
     private Button btnReset;
     
-    private ArrayList<String> parole = new ArrayList<String>();
 
     @FXML
     void doInsert(ActionEvent event) {
-    	// TODO
+    	
+    	String ts = txtParola.getText();
+    	
+    	txtParola.setText("");
+    	
+    	//int tentativo = 0;
+    	try {
+    		String s = String.valueOf(ts); 						 
+    	}catch(IllegalArgumentException e) {  		
+    		//txtRisultato.appendText("Devi inserire un numero!"); 
+    		return; 										
+    	}
+    	
+    	if (ts == "")
+    		return;
+
+    	elenco.addParola(ts);
+    	
+    	List listaParole = elenco.getElenco();
+    	
+    	String listaParoleOrdine = elenco.toString(listaParole);
+    	
+    	txtResult.setText(listaParoleOrdine);
+    	
+    	
     }
 
     @FXML
