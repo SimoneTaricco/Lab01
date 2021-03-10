@@ -43,7 +43,7 @@ public class FXMLController {
     @FXML
     void doCancella(ActionEvent event) {
     	long inizio = System.nanoTime();
-    	String s = txtParola.getText();
+    	String s = txtResult.getSelectedText();
     	elenco.cancella(s);
     	
     	List listaParole = elenco.getElenco();    	
