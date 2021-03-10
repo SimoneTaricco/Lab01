@@ -23,15 +23,13 @@ public class Parole {
 	}
 	
 	public void reset() {	
-		for (int i=0; i<this.parole.size(); i++)
-			this.parole.remove(i);
+		this.parole.removeAll(parole);
 	}
 	
 	public String toString(List l) {	
 		String res = "";
 		for (int i=0; i<l.size(); i++)
-			res += l.get(i) + "\n";
-		
+			res += l.get(i) + "\n";		
 		return res;
 	}
 	

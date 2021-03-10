@@ -43,12 +43,12 @@ public class FXMLController {
     	txtParola.setText("");
     	
     	//int tentativo = 0;
-    	try {
+    	/*try {
     		String s = String.valueOf(ts); 						 
     	}catch(IllegalArgumentException e) {  		
     		//txtRisultato.appendText("Devi inserire un numero!"); 
     		return; 										
-    	}
+    	}*/
     	
     	if (ts == "")
     		return;
@@ -60,13 +60,13 @@ public class FXMLController {
     	String listaParoleOrdine = elenco.toString(listaParole);
     	
     	txtResult.setText(listaParoleOrdine);
-    	
-    	
+  	
     }
 
     @FXML
-    void doReset(ActionEvent event) {
-    	// TODO
+    void doReset(ActionEvent event) {    	
+    	elenco.reset();
+    	txtResult.setText("");
     }
 
     @FXML
