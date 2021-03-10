@@ -36,6 +36,9 @@ public class FXMLController {
     
     @FXML
     private Button btnCancella;
+    
+    @FXML
+    private TextArea txtTime;
 
     @FXML
     void doCancella(ActionEvent event) {
@@ -45,6 +48,8 @@ public class FXMLController {
     	List listaParole = elenco.getElenco();    	
     	String listaParoleOrdine = elenco.toString(listaParole);    	
     	txtResult.setText(listaParoleOrdine);
+    	
+    	txtTime.appendText(Objects.toString(System.nanoTime())+ "\n");
     }
     
     @FXML
@@ -59,13 +64,17 @@ public class FXMLController {
     	elenco.addParola(ts);    	
     	List listaParole = elenco.getElenco();    	
     	String listaParoleOrdine = elenco.toString(listaParole);    	
-    	txtResult.setText(listaParoleOrdine); 	
+    	txtResult.setText(listaParoleOrdine); 
+    	
+    	txtTime.appendText(Objects.toString(System.nanoTime()) + "\n");
     }
 
     @FXML
     void doReset(ActionEvent event) {    	
     	elenco.reset();
     	txtResult.setText("");
+    	
+    	txtTime.appendText(Objects.toString(System.nanoTime())+ "\n");
     }
 
     @FXML

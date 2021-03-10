@@ -18,7 +18,7 @@
       </Label>
    </top>
    <center>
-      <VBox spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox prefWidth="262.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <HBox spacing="10.0">
                <children>
@@ -28,6 +28,12 @@
                </children>
             </HBox>
             <TextArea fx:id="txtResult" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="263.0" text="Tempo di esecuzione delle operazioni eseguite" />
+            <TextArea fx:id="txtTime" editable="false" prefHeight="146.0" prefWidth="262.0">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </TextArea>
          </children>
       </VBox>
    </center>
