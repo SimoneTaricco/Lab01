@@ -50,7 +50,7 @@ public class FXMLController {
     	String listaParoleOrdine = elenco.toString(listaParole);    	
     	txtResult.setText(listaParoleOrdine);
     	long fine = System.nanoTime();
-    	txtTime.appendText(Objects.toString((fine - inizio)) + "\n");
+    	txtTime.appendText(Objects.toString("Cancellazione parola [ns]: " + (fine - inizio)) + "\n");
     }
     
     @FXML
@@ -69,7 +69,7 @@ public class FXMLController {
     	txtResult.setText(listaParoleOrdine); 
     	
     	long fine = System.nanoTime();    	
-    	txtTime.appendText(Objects.toString((fine - inizio)) + "\n");
+    	txtTime.appendText(Objects.toString("Inserimento parola [ns]: " + (fine - inizio)) + "\n");
     }
 
     @FXML
@@ -79,7 +79,7 @@ public class FXMLController {
     	elenco.reset();
     	txtResult.setText("");
     	long fine = System.nanoTime();
-    	txtTime.appendText(Objects.toString((fine - inizio)) + "\n");
+    	txtTime.appendText(Objects.toString("Reset elenco [ns]: " + (fine - inizio)) + "\n");
     }
 
     @FXML
