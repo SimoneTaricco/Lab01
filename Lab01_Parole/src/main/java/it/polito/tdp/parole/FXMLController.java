@@ -1,6 +1,6 @@
 package it.polito.tdp.parole;
 
-import it.polito.tdp.parole.model.Parole;
+import it.polito.tdp.parole.model.*;
 
 import java.net.URL;
 import java.util.*;
@@ -15,6 +15,8 @@ import javafx.scene.control.TextField;
 public class FXMLController {
 	
 	Parole elenco = new Parole();
+	
+	ParoleDue elencoDue = new ParoleDue();
 
     @FXML
     private ResourceBundle resources;
@@ -50,7 +52,17 @@ public class FXMLController {
     	String listaParoleOrdine = elenco.toString(listaParole);    	
     	txtResult.setText(listaParoleOrdine);
     	long fine = System.nanoTime();
-    	txtTime.appendText(Objects.toString("Cancellazione parola [ns]: " + (fine - inizio)) + "\n");
+    	txtTime.appendText(Objects.toString("Cancellazione parola - ArrayList [ns]: " + (fine - inizio)) + "\n");
+    	
+    	long inizioDue = System.nanoTime();
+    	String sDue = txtResult.getSelectedText();
+    	elenco.cancella(sDue);
+    	
+    	List listaParoleDue = elencoDue.getElenco();    	
+    	String listaParoleOrdineDue = elencoDue.toString(listaParoleDue);    	
+    	txtResult.setText(listaParoleOrdineDue);
+    	long fineDue = System.nanoTime();
+    	txtTime.appendText(Objects.toString("Cancellazione parola - LinkedList [ns]: " + (fineDue - inizioDue)) + "\n");
     }
     
     @FXML
@@ -58,7 +70,6 @@ public class FXMLController {
     	
     	long inizio = System.nanoTime();  	
     	String ts = txtParola.getText();  	
-    	txtParola.setText("");
     	    	
     	if (ts == "")
     		return;
@@ -69,7 +80,23 @@ public class FXMLController {
     	txtResult.setText(listaParoleOrdine); 
     	
     	long fine = System.nanoTime();    	
-    	txtTime.appendText(Objects.toString("Inserimento parola [ns]: " + (fine - inizio)) + "\n");
+    	txtTime.appendText(Objects.toString("Inserimento parola - ArrayList [ns]: " + (fine - inizio)) + "\n");
+    	
+    	long inizioDue = System.nanoTime();  	
+    	String ts2 = txtParola.getText();  	
+    	    	
+    	if (ts2 == "")
+    		return;
+
+    	elencoDue.addParola(ts2);    	
+    	List listaParoleDue = elencoDue.getElenco();    	
+    	String listaParoleOrdineDue = elencoDue.toString(listaParoleDue);    	
+    	txtResult.setText(listaParoleOrdineDue); 
+    	
+    	long fineDue = System.nanoTime();    	
+    	txtTime.appendText(Objects.toString("Inserimento parola - LinkedList [ns]: " + (fineDue - inizioDue)) + "\n");
+    	
+    	txtParola.setText("");
     }
 
     @FXML
@@ -79,7 +106,13 @@ public class FXMLController {
     	elenco.reset();
     	txtResult.setText("");
     	long fine = System.nanoTime();
-    	txtTime.appendText(Objects.toString("Reset elenco [ns]: " + (fine - inizio)) + "\n");
+    	txtTime.appendText(Objects.toString("Reset elenco  - ArrayList [ns]: " + (fine - inizio)) + "\n");
+    	
+    	long inizioDue = System.nanoTime();
+    	elencoDue.reset();
+    	txtResult.setText("");
+    	long fineDue = System.nanoTime();
+    	txtTime.appendText(Objects.toString("Reset elenco  - LinkedList [ns]: " + (fineDue - inizioDue)) + "\n");	
     }
 
     @FXML
