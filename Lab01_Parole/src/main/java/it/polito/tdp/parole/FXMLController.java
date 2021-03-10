@@ -34,33 +34,32 @@ public class FXMLController {
     @FXML
     private Button btnReset;
     
+    @FXML
+    private Button btnCancella;
 
+    @FXML
+    void doCancella(ActionEvent event) {
+    	String s = txtParola.getText();
+    	elenco.cancella(s);
+    	
+    	List listaParole = elenco.getElenco();    	
+    	String listaParoleOrdine = elenco.toString(listaParole);    	
+    	txtResult.setText(listaParoleOrdine);
+    }
+    
     @FXML
     void doInsert(ActionEvent event) {
     	
-    	String ts = txtParola.getText();
-    	
+    	String ts = txtParola.getText();  	
     	txtParola.setText("");
-    	
-    	//int tentativo = 0;
-    	/*try {
-    		String s = String.valueOf(ts); 						 
-    	}catch(IllegalArgumentException e) {  		
-    		//txtRisultato.appendText("Devi inserire un numero!"); 
-    		return; 										
-    	}*/
-    	
+    	    	
     	if (ts == "")
     		return;
 
-    	elenco.addParola(ts);
-    	
-    	List listaParole = elenco.getElenco();
-    	
-    	String listaParoleOrdine = elenco.toString(listaParole);
-    	
-    	txtResult.setText(listaParoleOrdine);
-  	
+    	elenco.addParola(ts);    	
+    	List listaParole = elenco.getElenco();    	
+    	String listaParoleOrdine = elenco.toString(listaParole);    	
+    	txtResult.setText(listaParoleOrdine); 	
     }
 
     @FXML

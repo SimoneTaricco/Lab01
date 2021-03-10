@@ -33,6 +33,12 @@ public class Parole {
 		return res;
 	}
 	
+	public void cancella(String s) {
+		for (String st:parole)
+			if (st.equals(s))
+				this.parole.remove(st);
+	}
+	
 	public static Comparator<String> ordineAlfabetico = new Comparator<String>() {
 		public int compare(String s1, String s2) {
 			return s1.compareTo(s2);
